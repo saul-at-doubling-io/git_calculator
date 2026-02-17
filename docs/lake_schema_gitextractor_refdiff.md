@@ -458,7 +458,7 @@ mysql> SELECT DISTINCT repo_id FROM lake.refs;
 | local:sXXXXX         |
 | local:***REMOVED***   |
 | local:***REMOVED***   |
-| local:***REMOVED***        |
+| local:sXXXXXi        |
 +---------------------------+
 6 rows in set (0.00 sec)
 ```
