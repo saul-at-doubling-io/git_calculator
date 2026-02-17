@@ -408,7 +408,7 @@ mysql> SELECT * FROM lake.commits LIMIT 2;
 | created_at              | updated_at              | _raw_data_params      | _raw_data_table | _raw_data_id | _raw_data_remark | sha                                      | additions | deletions | dev_eq | message                                                                                                                                                                                            | author_name    | author_email                                      | authored_date           | author_id                                         | committer_name | committer_email       | committed_date          | committer_id          |
 +-------------------------+-------------------------+-----------------------+-----------------+--------------+------------------+------------------------------------------+-----------+-----------+--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+---------------------------------------------------+-------------------------+---------------------------------------------------+----------------+-----------------------+-------------------------+-----------------------+
 | 2026-02-16 01:05:12.017 | 2026-02-16 01:05:12.017 | local:sXXXXX     | gitextractor    |            0 |                  | 000578c55984e35eb786e153c54d54385b3cc049 |       109 |        19 |      0 | 0x5570646174656420666574636853636F6F707342795479706520636C6F75642066756E6374696F6E20746F20696E636C75646520746F74616C53636F6F7073206E756D62657220756E64657220706167696E6174696F6E2073656374696F6E0A | PXXX CXXX | XXXX@XXXX.com                             | 2025-09-24 14:14:25.000 | XXXX@XXXX.com                             | PXXX CXXX | XXXX@XXXX.com | 2025-09-24 14:14:25.000 | XXXX@XXXX.com |
-| 2026-02-16 01:04:55.958 | 2026-02-16 01:04:55.958 | local:***REMOVED*** | gitextractor    |            0 |                  | 0016a69fe6f130b965c929bd1537b417212249af |         6 |         9 |      0 | 0x4D657267652070756C6C207265717565737420233238332066726F6D2053686172652D53636F6F70732F72656C656173650A0A52656C65617365                                                                             | ZXXX KXXXXX      | 50744499+XXXX@users.noreply.github.com | 2023-02-25 02:24:41.000 | 50744499+XXXX@users.noreply.github.com | GitHub         | XXXX@github.com    | 2023-02-25 02:24:41.000 | XXXX@github.com    |
+| 2026-02-16 01:04:55.958 | 2026-02-16 01:04:55.958 | local:sXXXXXi | gitextractor    |            0 |                  | 0016a69fe6f130b965c929bd1537b417212249af |         6 |         9 |      0 | 0x4D657267652070756C6C207265717565737420233238332066726F6D2053686172652D53636F6F70732F72656C656173650A0A52656C65617365                                                                             | ZXXX KXXXXX      | 50744499+XXXX@users.noreply.github.com | 2023-02-25 02:24:41.000 | 50744499+XXXX@users.noreply.github.com | GitHub         | XXXX@github.com    | 2023-02-25 02:24:41.000 | XXXX@github.com    |
 +-------------------------+-------------------------+-----------------------+-----------------+--------------+------------------+------------------------------------------+-----------+-----------+--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+---------------------------------------------------+-------------------------+---------------------------------------------------+----------------+-----------------------+-------------------------+-----------------------+
 2 rows in set (0.00 sec)
 ```
@@ -442,8 +442,8 @@ mysql> SELECT * FROM lake.refs LIMIT 2;
 +-------------------------+-------------------------+---------------------------+-----------------+--------------+------------------+---------------------------+------+------------------------------------------+------------+----------+--------------+--------------------------------+
 | created_at              | updated_at              | _raw_data_params          | _raw_data_table | _raw_data_id | _raw_data_remark | repo_id                   | name | commit_sha                               | is_default | ref_type | created_date | id                             |
 +-------------------------+-------------------------+---------------------------+-----------------+--------------+------------------+---------------------------+------+------------------------------------------+------------+----------+--------------+--------------------------------+
-| 2026-02-16 01:04:57.026 | 2026-02-16 01:04:57.026 | local:***REMOVED***     | gitextractor    |            0 |                  | local:***REMOVED***     | main | fb3f7358e30d9ecf4f43991a60f3cd2c9db68699 |          1 | BRANCH   | NULL         | local:***REMOVED***:main     |
-| 2026-02-16 01:05:34.204 | 2026-02-16 01:05:34.204 | local:***REMOVED*** | gitextractor    |            0 |                  | local:***REMOVED*** | main | 4899828e842a69742e8787b21a9ade396c282a8a |          1 | BRANCH   | NULL         | local:***REMOVED***:main |
+| 2026-02-16 01:04:57.026 | 2026-02-16 01:04:57.026 | local:sXXXXXi     | gitextractor    |            0 |                  | local:sXXXXXi     | main | fb3f7358e30d9ecf4f43991a60f3cd2c9db68699 |          1 | BRANCH   | NULL         | local:sXXXXXi:main     |
+| 2026-02-16 01:05:34.204 | 2026-02-16 01:05:34.204 | local:sXXXXXa | gitextractor    |            0 |                  | local:sXXXXXa | main | 4899828e842a69742e8787b21a9ade396c282a8a |          1 | BRANCH   | NULL         | local:sXXXXXa:main |
 +-------------------------+-------------------------+---------------------------+-----------------+--------------+------------------+---------------------------+------+------------------------------------------+------------+----------+--------------+--------------------------------+
 2 rows in set (0.00 sec)
 ```
@@ -453,12 +453,12 @@ mysql> SELECT DISTINCT repo_id FROM lake.refs;
 +---------------------------+
 | repo_id                   |
 +---------------------------+
-| local:***REMOVED***     |
-| local:***REMOVED*** |
-| local:sXXXXX         |
-| local:***REMOVED***   |
-| local:***REMOVED***   |
-| local:sXXXXXi        |
+| local:sXXXXX    |
+| local:sXXXXXa   |
+| local:sXXXXXc   |
+| local:sXXXXXe   |
+| local:sXXXXXm   |
+| local:sXXXXXi   |
 +---------------------------+
 6 rows in set (0.00 sec)
 ```
@@ -488,7 +488,7 @@ mysql> SELECT * FROM lake.commit_parents LIMIT 2;
 | commit_sha                               | parent_commit_sha                        | created_at              | updated_at              | _raw_data_params      | _raw_data_table | _raw_data_id | _raw_data_remark |
 +------------------------------------------+------------------------------------------+-------------------------+-------------------------+-----------------------+-----------------+--------------+------------------+
 | 000578c55984e35eb786e153c54d54385b3cc049 | ebc70c48abaaf3f0ceee6257ac5995f5affe77f9 | 2026-02-16 01:05:11.954 | 2026-02-16 01:05:11.954 | local:sXXXXX     | gitextractor    |            0 |                  |
-| 0016a69fe6f130b965c929bd1537b417212249af | abe6368f7dac4c26034d5da30b11bd67615c515c | 2026-02-16 01:04:55.950 | 2026-02-16 01:04:55.950 | local:***REMOVED*** | gitextractor    |            0 |                  |
+| 0016a69fe6f130b965c929bd1537b417212249af | abe6368f7dac4c26034d5da30b11bd67615c515c | 2026-02-16 01:04:55.950 | 2026-02-16 01:04:55.950 | local:sXXXXXi | gitextractor    |            0 |                  |
 +------------------------------------------+------------------------------------------+-------------------------+-------------------------+-----------------------+-----------------+--------------+------------------+
 2 rows in set (0.01 sec)
 ```
@@ -499,7 +499,7 @@ mysql> SELECT * FROM lake.commit_parents LIMIT 2;
 
 - **Exact predicate** used to restrict to one repo on both `commits` and `refs`:
   - `WHERE _raw_data_params IN ('$repo_id')`
-- **`_raw_data_params`** holds the repo scope on each row; values match the format of `repo_id` (e.g. `local:***REMOVED***`, `local:sXXXXX`).
+- **`_raw_data_params`** holds the repo scope on each row; values match the format of `repo_id` (e.g. `local:sXXXXXi`, `local:sXXXXX`).
 - **`$repo_id`** in the dashboard is provided by the template variable whose query is:
   - `SELECT DISTINCT repo_id FROM refs;`
-- So filtering commits (or refs) to a single repo uses the same value as in `refs.repo_id`, e.g. `WHERE _raw_data_params IN ('local:***REMOVED***')`.
+- So filtering commits (or refs) to a single repo uses the same value as in `refs.repo_id`, e.g. `WHERE _raw_data_params IN ('local:sXXXXXi')`.
